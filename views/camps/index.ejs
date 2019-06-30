@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+<!-- Jumbotron -->
+<div class="container">
+	<div class="jumbotron index">
+		<div class="container text-center">
+			<h1 class="display-4">Welcome to YelpCamp!</h1>
+			<p>View all camp grounds from all over the world.</p>
+			<a class="btn btn-primary btn-lg" href="/camps/new" role="button">Create new</a>
+		</div>
+	</div>
+</div>
+<!-- Camp Cards -->
+<div class="container">
+	<div class="row">
+		<% campList.forEach(function(campSpot) { %>
+		<div class="col-12 col-md-6 col-lg-4">
+			<div class="card text-center index-card">
+				<img class="card-img-top" src="<%= campSpot.image %>" alt="Campsite Image">
+				<div class="card-body">
+					<h5 class="card-title"><%= campSpot.name %></h5>
+					<a href="/camps/<%= campSpot._id %>" class="btn btn-primary more-info">More Info</a>
+				</div>
+			</div>
+		</div>
+		<% }); %>
+	</div>
+</div>
+<p class="text-center">&copy; Zeyu Fu 2019</p>
+<% include ../partials/footer %>

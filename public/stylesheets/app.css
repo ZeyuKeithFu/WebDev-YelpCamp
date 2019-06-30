@@ -1,0 +1,35 @@
+body {
+	padding-top: 80px;
+}
+.show {
+	margin-top: 30px;
+}
+.card {
+	margin-bottom: 30px;
+}
+.index-card .card-img-top {
+	height: 16vw;
+	object-fit: cover;
+}
+.new-input {
+	width: 50%;
+	margin-top: 30px;
+}
+.more-info {
+	width: 40%;
+}
+.navbar-text {
+	padding-right: 20px;
+}
+.show-btn {
+	width: 80px;
+	margin-left: 8px;
+}
+.des-text {
+	margin-top: 30px;
+}
+.copyright {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}

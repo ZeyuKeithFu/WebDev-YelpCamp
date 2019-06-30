@@ -1,0 +1,56 @@
+<% include ../partials/header %>
+<div class="container show">
+	<div class="row">
+		<div class="col-12 col-md-3">
+			<p class="lead">Yelp Camp</p>
+			<div class="list-group">
+				<li class="list-group-item active">Info1</li>
+				<li class="list-group-item">Info2</li>
+				<li class="list-group-item">Info3</li>
+			</div>
+		</div>
+		<div class="col-12 col-md-9">
+			<div class="card">
+  				<img src="<%= camp.image %>" class="card-img-top" alt="Camp Image">
+  				<div class="card-body">
+					<h5 class="card-title float-right">$9.00/Night</h5>
+    				<h4 class="card-title"><a href="#"><%= camp.name %></a></h4>
+					<p class="card-text">
+						<% if (currentUser && camp.author.id.equals(currentUser._id)) { %>
+						<form action="/camps/<%= camp._id %>?_method=DELETE" method="POST" style="display: inline;">
+							<button type="submit" class="btn btn-outline-danger float-right show-btn">Delete</button>
+						</form>
+						<a href="/camps/<%= camp._id %>/edit" class="btn btn-outline-success float-right show-btn">Edit</a>
+						<% } %>
+						<em>Created by <strong><%= camp.author.username %></strong></em>
+					</p>
+    				<p class="card-text des-text"><%= camp.description %></p>
+  				</div>
+			</div>
+			<div class="card">
+  				<div class="card-header d-flex align-items-center justify-content-between">
+					<h4 style="margin-top: 0; margin-bottom: 0;">Reviews</h4>
+					<a href="/camps/<%= camp._id %>/comments/new" class="btn btn-primary float-right">New Comment</a>
+				</div>
+  				<ul class="list-group list-group-flush">
+					<% camp.comments.forEach(function(comment) { %>
+					<li class="list-group-item">
+						<strong><%= comment.author.username %></strong>
+						<span class="float-right">10 days ago</span>
+						<p>
+							<%= comment.content %>
+						</p>
+						<% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+						<form action="/camps/<%= camp._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+							<button type="submit" class="btn btn-sm btn-danger btn-block">Delete Comment</button>
+						</form>
+						<% } %>
+					</li>
+					<% }) %>
+  				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<p class="text-center">&copy; Zeyu Fu 2019</p>
+<% include ../partials/footer %>
